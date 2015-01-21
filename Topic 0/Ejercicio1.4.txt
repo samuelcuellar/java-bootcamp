@@ -1,0 +1,50 @@
+//Ejercicio 1.4
+
+public class MyCircle {
+	private int radius;
+	private MyPoint  center;
+	private double area;
+	final double PI=3.14;
+	
+	
+	public MyCircle(int x, int y){
+		super();
+		
+	}
+	public MyCircle(int radius, MyPoint center) {
+		super();
+		this.radius = radius;
+		this.center = center;
+	}
+	public int getRadius() {
+		return radius;
+	}
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+	public MyPoint getCenter() {
+		return center;
+	}
+	public void setCenter(MyPoint center) {
+		this.center = center;
+	} 
+	
+public String toString(){
+	return "Cyrcle center is = " + getCenter() + "  Radius= " + radius;
+	
+}
+public void getArea(){
+	area=radius*radius*PI;
+	
+}
+}
+
+
+public class TestMyCircle {
+	public static void main(String[] args){
+		
+		MyCircle aCircle= new MyCircle(1,new MyPoint(2,3));
+		System.out.println(aCircle);
+	}
+
+}
