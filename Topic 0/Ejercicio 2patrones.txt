@@ -1,0 +1,172 @@
+// Ejercicio Nro 2-Design a building like a house and provide a builder to build it.
+
+public class House {
+
+	private String floor;
+	private String bedroom;
+	private String bathroom;
+	private String garage;
+
+	public String getFloor() {
+		return floor;
+	}
+
+	public void setFloor(String floor) {
+		this.floor = floor;
+	}
+
+	public String getBedroom() {
+		return bedroom;
+	}
+
+	public void setBedroom(String bedroom) {
+		this.bedroom = bedroom;
+	}
+
+	public String getBathroom() {
+		return bathroom;
+	}
+
+	public void setBathroom(String bathroom) {
+		this.bathroom = bathroom;
+	}
+
+	public String getGarage() {
+		return garage;
+	}
+
+	public void setGarage(String garage) {
+		this.garage = garage;
+	}
+
+	public String toString() {
+		return "Floors:" + floor + "  Bedrooms:" + bedroom + "  Bathroom:" + bathroom + "  Garage:" + garage;
+	}
+
+}
+public interface HouseBuilder {
+
+	public void buildFloor();
+
+	public void buildBedroom();
+
+	public void buildBathroom();
+
+	public void buildGarage();
+
+	public House getHouse();
+
+}
+public class DuplexHouseBuilder implements HouseBuilder {
+
+	private House house;
+
+	public DuplexHouseBuilder() {
+		house = new House();
+	}
+
+	@Override
+	public void buildFloor() {
+		house.setFloor("Two");
+
+	}
+
+	@Override
+	public void buildBedroom() {
+		house.setBedroom("Two");
+
+	}
+
+	@Override
+	public void buildBathroom() {
+		house.setBathroom("Two");
+
+	}
+
+	@Override
+	public void buildGarage() {
+		house.setGarage("NO");
+
+	}
+
+	@Override
+	public House getHouse() {
+
+		return house;
+	}
+
+}
+public class DetachedHouseBuilder implements HouseBuilder {
+
+	private House house;
+
+	public DetachedHouseBuilder() {
+		house = new House();
+
+	}
+
+	@Override
+	public void buildFloor() {
+		house.setFloor("One");
+
+	}
+
+	@Override
+	public void buildBedroom() {
+		house.setBedroom("Four");
+	}
+
+	@Override
+	public void buildBathroom() {
+		house.setBathroom("Two");
+	}
+
+	@Override
+	public void buildGarage() {
+		house.setGarage("For two cars");
+	}
+
+	@Override
+	public House getHouse() {
+
+		return house;
+	}
+}
+public class HouseDirector {
+
+	private HouseBuilder houseBuilder = null;
+
+	public HouseDirector(HouseBuilder houseBuilder) {
+		this.houseBuilder = houseBuilder;
+
+	}
+
+	public void constructHouse() {
+		houseBuilder.buildFloor();
+		houseBuilder.buildBedroom();
+		houseBuilder.buildBathroom();
+		houseBuilder.buildGarage();
+
+	}
+
+	public House getHouse() {
+		return houseBuilder.getHouse();
+	}
+}
+public class TestBuilder {
+	public static void main(String args[]) {
+
+		HouseBuilder houseBuilder = new DuplexHouseBuilder();
+		HouseDirector houseDirector = new HouseDirector(houseBuilder);
+		houseDirector.constructHouse();
+		House house = houseDirector.getHouse();
+		System.out.println("The house is: " + house);
+		
+		houseBuilder = new DetachedHouseBuilder();
+		houseDirector = new HouseDirector(houseBuilder);
+		houseDirector.constructHouse();
+		house = houseDirector.getHouse();
+		System.out.println("The house is: " + house);
+	}
+
+}
