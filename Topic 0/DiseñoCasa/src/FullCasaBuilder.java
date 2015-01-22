@@ -5,7 +5,8 @@ public class FullCasaBuilder implements CasaBuilder {
 	public FullCasaBuilder() { // constructor por defecto
 		casa = new Casa();
 	}
-	//tipo de casa
+
+	// tipo de casa
 	@Override
 	public void builBaños() {
 		casa.setBaños(2);
@@ -25,9 +26,10 @@ public class FullCasaBuilder implements CasaBuilder {
 	public void builCocina() {
 		casa.setCocina("comedor");
 	}
-	//devolver el tipo de casa
+
+	// devolver el tipo de casa
 	@Override
 	public Casa getCasa() {
 		return casa;
 	}
-}	
+}

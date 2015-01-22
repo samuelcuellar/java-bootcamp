@@ -1,33 +1,35 @@
-public class DeluxeCasaBuilder implements CasaBuilder {
+public class FamiliarCasaBuilder implements CasaBuilder {
 
 	private Casa casa;
 
-	public DeluxeCasaBuilder() { // constructor por defecto
+	public FamiliarCasaBuilder() { // constructor por defecto
 		casa = new Casa();
 	}
-	//tipo de casa
+
+	// tipo de casa
 	@Override
 	public void builBaños() {
-		casa.setBaños(3);
+		casa.setBaños(1);
 	}
 
 	@Override
 	public void builDormitorios() {
-		casa.setDormitorios(4);
+		casa.setDormitorios(2);
 	}
 
 	@Override
 	public void builSalas() {
-		casa.setSalas(2);
+		casa.setSalas(1);
 	}
 
 	@Override
 	public void builCocina() {
-		casa.setCocina("comedor");
+		casa.setCocina("simple");
 	}
-	//devolver el tipo de casa
+
+	// devolver el tipo de casa
 	@Override
 	public Casa getCasa() {
 		return casa;
 	}
-}	
+}
