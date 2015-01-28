@@ -45,4 +45,11 @@ public class TransPayPal extends Transaction {
 		return null;
 	}
 
+	@Override
+	public void printPaymentInformation() {
+		System.out.println("email de la cuenta PayPal:" + email
+				+ ", PayPal password acount:" + password);
+
+	}
+
 }

@@ -1,12 +1,12 @@
-public class TransCreditCard extends Transaction{
+public class TransCreditCard extends Transaction {
 
 	private String name;
 	private int number;
-	
+
 	public TransCreditCard(User user, String transactionType) {
-		super(transactionType,user);
+		super(transactionType, user);
 	}
-	
+
 	@Override
 	public void askRequirement() {
 		System.out.println("A name and a credit number is required.");
@@ -27,7 +27,7 @@ public class TransCreditCard extends Transaction{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public String toString() {
 		return super.toString();
@@ -36,13 +36,13 @@ public class TransCreditCard extends Transaction{
 	@Override
 	public void setEmail(String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setPassword(String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -55,6 +55,12 @@ public class TransCreditCard extends Transaction{
 	public String getPassword() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void printPaymentInformation() {
+		System.out.println("numero de tarjeta: " + number + ", titular: "
+				+ name);
 	}
 
 }

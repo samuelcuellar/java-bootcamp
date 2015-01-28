@@ -40,4 +40,8 @@ public class TransactionCash extends Transaction {
 		return null;
 	}
 
+	@Override
+	public void printPaymentInformation() {
+	}
+
 }

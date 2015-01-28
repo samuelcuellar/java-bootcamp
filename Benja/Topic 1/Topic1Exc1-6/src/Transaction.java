@@ -3,13 +3,31 @@ public abstract class Transaction {
 	private User user;
 	private String transactionType;
 	private double total;
+	private TotalCalculatorWithDiscount calculator;
+	private int number;
 
 	public Transaction(String type, User user) {
 		this.user = user;
 		this.transactionType = type;
 		this.total = user.getCart().getTotal();
-		System.out.println("New transaction. Type: " + type + ", total: $"
-				+ total);
+		TransactionCounter.addTransaction(this);
+		TransactionCounter.setCounter(this);
+		System.out.println("New transaction (" + number + "). Type: " + type
+				+ ", total: $" + total);
+		MailList.notification("A new transaction has been made: "
+				+ this.toString());
+	}
+
+	public void setNumber1(int number) {
+		this.number = number;
+	}
+
+	public TotalCalculatorWithDiscount getCalculator() {
+		return calculator;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
 	public double getTotal() {
@@ -30,12 +48,7 @@ public abstract class Transaction {
 
 	public abstract void setName(String s);
 
-	@Override
-	public String toString() {
-		return "Transaction Type: " + transactionType + ", total: $" + total;
-	}
-	
-	public void emptyUserCart(){
+	public void emptyUserCart() {
 		System.out.println("cart restored");
 		user.getCart().empty();
 	}
@@ -50,4 +63,15 @@ public abstract class Transaction {
 
 	public abstract String getPassword();
 
+	public abstract void printPaymentInformation();
+
+	public int getNumber() {
+		return number;
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction Type: " + transactionType + "\t number: " + number
+				+ "\t total: $" + total;
+	}
 }
