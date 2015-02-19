@@ -8,8 +8,9 @@ import bootcamp.benja.model.User;
 
 @Transactional
 public interface UserDao extends CrudRepository<User, Long> {
-	
+
 	User findById(long id);
+
 	User findByUserName(String userName);
-	
+
 }

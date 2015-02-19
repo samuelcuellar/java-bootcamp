@@ -11,40 +11,59 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "cart_line")
-public class CartLine {
-
-	@ManyToOne
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
+@Table(name = "sale_line")
+public class SaleLine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "line_id")
 	private long id;
 
+	// //////relaciones
+	@ManyToOne
+	@JoinColumn(name = "sale_number")
+	private Sale sale;
+
 	@ManyToOne
 	@JoinColumn(name = "item_code")
 	private Item item;
 
+	// //////attributes
 	@NotNull
 	@Column(name = "quantity")
 	private int quantity;
 
-	// /////////// constructores
-	public CartLine() {
+	@Column(name = "subtotal")
+	private double subtotal;
+
+	// /////////constructores
+
+	public SaleLine() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public CartLine(long id) {
+	public SaleLine(long id) {
 		this.id = id;
 	}
 
-	public CartLine(Item item, int quantity) {
-		this.item = item;
-		this.quantity = quantity;
+	// //////////// aqui el constructor especifico
+
+	// ////////getters y setters
+	public long getId() {
+		return id;
 	}
 
-	// //////////// getters y setters
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Sale getSale() {
+		return sale;
+	}
+
+	public void setSale(Sale sale) {
+		this.sale = sale;
+	}
 
 	public Item getItem() {
 		return item;
@@ -62,20 +81,12 @@ public class CartLine {
 		this.quantity = quantity;
 	}
 
-	public long getId() {
-		return id;
+	public double getSubtotal() {
+		return subtotal;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
 	}
 
 }
