@@ -25,8 +25,7 @@ public class UserController extends GlobalController {
 	@ResponseBody
 	public String userRegistration(String fullName, String email,
 			String userName, String password, String repitePassword) {
-		// mejorar para q valide el nombre de usuario y haya q repetir el
-		// password
+		
 		long id;
 
 		id = servi.registrateUser(fullName, email, userName, password,
@@ -43,7 +42,7 @@ public class UserController extends GlobalController {
 	@RequestMapping("/logIn")
 	@ResponseBody
 	public String logIn(String userName, String password) {
-
+		servi.logOut();
 		return " " + servi.logInUser(userName, password);
 	}
 

@@ -7,7 +7,7 @@ public class GlobalController {
 	public static void setSesionId(long l) {
 		sesionId = l;
 	}
-	
+
 	public static long getSesionId() {
 		return sesionId;
 	}

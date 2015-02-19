@@ -4,10 +4,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import bootcamp.benja.model.Cart;
+import bootcamp.benja.model.SaleLine;
 
 @Transactional
-public interface CartDao extends CrudRepository<Cart, Long> {
+public interface SaleLineDao extends CrudRepository<SaleLine, Long> {
 
-	// public Item findByCode(long code);
 }

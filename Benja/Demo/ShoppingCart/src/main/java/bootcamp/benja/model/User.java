@@ -15,41 +15,41 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_id")
+	@Column(name = "user_id")
 	private long id;
 
 	@NotNull
-	@Column(name="user_name")
+	@Column(name = "user_name")
 	private String userName;
-	
+
 	@NotNull
-	@Column(name="user_password")
+	@Column(name = "user_password")
 	private String password;
-	
+
 	@NotNull
-	@Column(name="user_full_name")
+	@Column(name = "user_full_name")
 	private String fullName;
-	
+
 	@NotNull
-	@Column(name="user_email")
+	@Column(name = "user_email")
 	private String email;
-	
+
 	@OneToOne(mappedBy = "user")
 	private Cart cart;
-	
+
 	public User() {
 	}
-	
+
 	public User(long id) {
 		this.id = id;
 	}
-	
+
 	public User(String fullName, String email, String userName, String password) {
 		this.fullName = fullName;
-		this.email=email;
-		this.userName=userName;
-		this.password=password;
-		
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+
 	}
 
 	public long getId() {

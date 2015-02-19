@@ -20,17 +20,17 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cart_id")
 	private long id;
-	
+
 	@OneToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@OneToMany(mappedBy = "cart")
 	private List<CartLine> lines;
-	
+
 	public Cart() {
 	}
-	
+
 	public Cart(long id) {
 		this.id = id;
 	}
@@ -58,6 +58,5 @@ public class Cart {
 	public void setLines(List<CartLine> lines) {
 		this.lines = lines;
 	}
-	
-	
+
 }

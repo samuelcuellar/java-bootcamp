@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bootcamp.benja.controller.CartController;
+import bootcamp.benja.controller.SaleController;
 import bootcamp.benja.model.Cart;
 import bootcamp.benja.model.User;
 import bootcamp.benja.persistence.CartDao;
@@ -57,8 +58,9 @@ public class UserService {
 		System.out.println(pass);
 		if (pass.equals(password)) {
 
+			SaleController.setSesionId(user.getId());
 			CartController.setSesionId(user.getId());
-			
+
 			return user.getFullName();
 		} else {
 			return "wrong password.";
@@ -67,6 +69,7 @@ public class UserService {
 
 	public void logOut() {
 		CartController.setSesionId(0);
+		SaleController.setSesionId(0);
 	}
 
 	public void upCart(long id) {

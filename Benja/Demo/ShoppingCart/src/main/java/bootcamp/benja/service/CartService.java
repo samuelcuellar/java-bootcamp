@@ -36,6 +36,7 @@ public class CartService {
 
 		// add cart line
 		CartLine line = new CartLine(item, quantity);
+		_lineDao.save(line);
 
 		// set line and cart
 		Cart cart = user.getCart();
